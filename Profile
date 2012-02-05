@@ -15,7 +15,8 @@ authors [
 ]
 
 requirements [
-  'test-unit'
+  'test-unit',
+  'rake (build)'
 ]
 
 resources(

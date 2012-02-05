@@ -17,6 +17,10 @@ replacements: []
 alternatives: []
 requirements:
 - name: test-unit
+- name: rake
+  groups:
+  - build
+  development: true
 dependencies: []
 conflicts: []
 repositories: []
