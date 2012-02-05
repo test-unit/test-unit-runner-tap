@@ -1,4 +1,5 @@
 require 'test/unit'
+require 'test/unit/runner/tap-version'
 
 module Test
   module Unit
