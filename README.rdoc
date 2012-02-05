@@ -1,0 +1,28 @@
+= Test::Unit::Runner::Tap
+
+* http://rubyforge.org/projects/test-unit/
+
+== DESCRIPTION:
+
+Test::Unit::Runner::Tap - A console Test::Unit UI supporting TAP and TAP-Y/J
+format.
+
+See {TAP}[http://testanything.org] for more information about TAP format.
+
+See {TAPOUT}[http://rubyworks.github.com/tapout] for more information about
+TAP-Y/J format.
+
+== INSTALL:
+
+* sudo gem install test-unit-runner-tap
+
+== USAGE:
+
+  require 'test/unit/runner/tap'
+
+== LICENSE:
+
+(The Ruby License)
+
+This software is distributed under the same terms as ruby.
+

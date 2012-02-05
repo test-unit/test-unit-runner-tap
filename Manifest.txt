@@ -1,0 +1,8 @@
+#!mast lib test [A-Z]*.*
+.yardopts
+lib/test/unit/runner/tap.rb
+lib/test/unit/ui/tap/testrunner.rb
+test/test_tap.rb
+History.txt
+README.rdoc
+
