@@ -1,10 +1,10 @@
 = Test::Unit::Runner::Tap
 
-* http://rubyforge.org/projects/test-unit/
+* http://test-unit.rubyforge.org
 
 == DESCRIPTION:
 
-Test::Unit::Runner::Tap - A console Test::Unit UI supporting TAP and TAP-Y/J
+*Test::Unit::Runner::Tap* - A console Test::Unit UI supporting TAP and TAP-Y/J
 format.
 
 See {TAP}[http://testanything.org] for more information about TAP format.
