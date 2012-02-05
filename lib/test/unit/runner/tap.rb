@@ -1,3 +1,5 @@
+require 'test/unit'
+
 module Test
   module Unit
     AutoRunner.register_runner(:tap) do |auto_runner|
@@ -6,3 +8,5 @@ module Test
     end
   end
 end
+
+# Copyright (c) 2012 Trans & Kouhei Sutou (LGPL v3.0)

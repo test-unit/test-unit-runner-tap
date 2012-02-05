@@ -80,3 +80,5 @@ module Test
     end
   end
 end
+
+# Copyright (c) 2012 Trans & Kouhei Sutou (LGPL v3.0)
