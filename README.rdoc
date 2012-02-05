@@ -4,7 +4,7 @@
 
 == DESCRIPTION:
 
-*Test::Unit::Runner::Tap* - A console Test::Unit UI supporting TAP and TAP-Y/J
+<b>Test::Unit::Runner::Tap</b> - A console Test::Unit UI supporting TAP and TAP-Y/J
 format.
 
 See {TAP}[http://testanything.org] for more information about TAP format.
@@ -14,7 +14,7 @@ TAP-Y/J format.
 
 == INSTALL:
 
-* sudo gem install test-unit-runner-tap
+  $ sudo gem install test-unit-runner-tap
 
 == USAGE:
 

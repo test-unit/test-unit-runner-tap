@@ -1,8 +1,10 @@
 #!mast lib test [A-Z]*.*
-.yardopts
+.ruby
 lib/test/unit/runner/tap.rb
+lib/test/unit/runner/tap-version.rb
 lib/test/unit/ui/tap/testrunner.rb
 test/test_tap.rb
+COPYING
 History.txt
 README.rdoc
 
