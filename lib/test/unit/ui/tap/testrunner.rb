@@ -1,11 +1,6 @@
-#--
-#
-# Author:: Kouhei Sutou.
-# Copyright:: Copyright (c) 2009-2010 Kouhei Sutou <kou@clear-code.com>.
-# License:: Ruby license.
-
 require 'test/unit/ui/testrunner'
 require 'test/unit/ui/testrunnermediator'
+require 'test/unit/ui/tap/abstract_testrunner'
 
 module Test
   module Unit
@@ -13,7 +8,7 @@ module Test
       module Tap
 
         # Runs a Test::Unit::TestSuite and outputs result
-        # as TAP format.
+        # as TAP format (version 12).
         class TestRunner < UI::TestRunner
           def initialize(suite, options={})
             super
@@ -76,6 +71,96 @@ module Test
             @output.flush
           end
         end
+
+        # TAP Version 12
+        #
+        # NOTE: This is the possible replacement for current Tap Runner
+        # utilizing the abstract base class.
+        #
+        class TestRunner12 < AbstractTestRunner
+          #
+          def tapout_before_suite(suite)
+            doc = super(suite)
+            @i = 0
+            puts "1..#{doc['count']}"
+          end
+
+          #
+          def tapout_pass(test)
+            doc = super(entry)
+            if doc
+              @i += 1
+              puts "ok #{@i} - #{doc['label']}"
+            end
+          end
+
+          #
+          def tapout_fail(fault)
+            doc = super(fault)
+            if doc
+              @i += 1
+              puts "not ok #{@i} - #{doc['label']}"
+              puts subdata(doc, 'FAIL')
+            end
+          end
+
+          #
+          def tapout_error(fault)
+            doc = super(fault)
+            if doc
+              @i += 1
+              puts "not ok #{@i} - #{doc['label']}"
+              puts subdata(doc, 'ERROR')
+            end
+          end
+
+          #
+          def tapout_omit(test)
+            doc = super(fault)
+            if doc
+              @i += 1
+              puts "not ok #{@i} - #{doc['label']}  # SKIP"
+              puts subdata(doc, 'SKIP')
+            end
+          end
+
+          #
+          def tapout_todo(test)
+            doc = super(fault)
+            if doc
+              @i += 1
+              puts "not ok #{@i} - #{doc['label']}  # TODO"
+              puts subdata(doc, 'TODO')
+            end
+          end
+
+          #
+          def tapout_note(note)
+            doc = super(note)
+            puts '# ' + doc['text'].gsub("\n", "\n# ")
+          end
+
+          #
+          def tapout_after_suite(time)
+            #puts
+          end
+
+        private
+
+          def subdata(doc, type)
+            x = doc['exception']
+            body = []
+            body << "#{type} #{x['file']}:#{x['line']}" 
+            #body << clean_backtrace(exception.backtrace)[0..2].join("    \n")
+            body << "#{x['class']}: #{x['message']}"
+            #body << ""
+            #body << snippet_text(entry)
+            #body << ""
+            body = body.join("\n").gsub(/^/, '#   ')
+          end
+
+        end
+
       end
     end
   end
