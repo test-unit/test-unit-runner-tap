@@ -7,7 +7,7 @@ version Test::Unit::Runner::Tap::VERSION
 title   "TestUnit TAP"
 summary "TAP runners for TestUnit."
 
-description "This project provides TAP and TAP-Y/J test output formats for the the TestUnit test framework."
+description "This project provides TAP and TAP-Y/J test output formats for the TestUnit test framework."
 
 authors [
   'Thomas Sawyer <transfire@gmail.com>',
