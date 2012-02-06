@@ -33,7 +33,7 @@ load_path:
 revision: 0
 name: test-unit-runner-tap
 title: TestUnit TAP
-version: 0.0.1
+version: 1.0.0
 summary: TAP runners for TestUnit.
 description: This project provides TAP and TAP-Y/J test output formats for the the
   TestUnit test framework.

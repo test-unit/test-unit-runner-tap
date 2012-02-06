@@ -24,8 +24,6 @@ TAP-Y/J format.
 
 (LGPL v3.0 License)
 
-Test::Unit::Runner::Tap - TAP and TAP-Y/J formats for TestUnit
-
 Copyright (c) 2012 Trans & Kouhei Sutou
 
 This program is free software: you can redistribute it and/or modify

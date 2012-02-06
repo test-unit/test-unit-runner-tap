@@ -22,3 +22,4 @@ require 'test/unit'
 #end
 
 exit Test::Unit::AutoRunner.run(true, test_dir)
+
