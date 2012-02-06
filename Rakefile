@@ -10,7 +10,7 @@ task :gem => ['.ruby'] do
   sh 'gem build .gemspec'  
 end
 
-file '.ruby' => 'lib/test/unit/runner/tap-version.rb' do
+file '.ruby' => ['Profile', 'lib/test/unit/runner/tap-version.rb'] do
   sh 'dotruby source Profile'
 end
 

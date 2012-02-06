@@ -100,8 +100,8 @@ module DotRuby
       Gem::Specification.new do |gemspec|
         gemspec.name        = name
         gemspec.version     = metadata['version']
-        gemspec.summary     = metadata['summary']
-        gemspec.description = metadata['description']
+        gemspec.summary     = metadata['summary'].sub("\n", ' ')
+        gemspec.description = metadata['description'].sub("\n", ' ')
 
         metadata['authors'].each do |author|
           gemspec.authors << author['name']
@@ -115,7 +115,7 @@ module DotRuby
           end
         end
 
-        gemspec.licenses = metadata['copyrights'].map{ |c| c['license'] }.compact
+        gemspec.licenses = metadata['copyrights'].map{ |c| c['license'] }.compact.uniq
 
         metadata['requirements'].each do |req|
           name    = req['name']
