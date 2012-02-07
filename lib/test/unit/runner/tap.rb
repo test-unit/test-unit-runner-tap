@@ -9,13 +9,31 @@ module Test
     end
 
     AutoRunner.register_runner(:tapj) do |auto_runner|
-      require 'test/unit/ui/tapj/testrunner'
-      TapUnit::TAPJ::TestRunner
+      require 'test/unit/ui/tap/json_testrunner'
+      Test::Unit::UI::Tap::JSONTestRunner
+    end
+
+    # alias for tap-j
+    AutoRunner.register_runner(:json) do |auto_runner|
+      require 'test/unit/ui/tap/json_testrunner'
+      Test::Unit::UI::Tap::JSONTestRunner
     end
 
     AutoRunner.register_runner(:tapy) do |auto_runner|
-      require 'test/unit/ui/tapy/testrunner'
-      TapUnit::TAPY::TestRunner
+      require 'test/unit/ui/tap/yaml_testrunner'
+      Test::Unit::UI::Tap::YAMLTestRunner
+    end
+
+    # alias for tap-y
+    AutoRunner.register_runner(:yaml) do |auto_runner|
+      require 'test/unit/ui/tap/yaml_testrunner'
+      Test::Unit::UI::Tap::YAMLTestRunner
+    end
+
+    # temporary, for testing difference between old and new
+    AutoRunner.register_runner(:tap12) do |auto_runner|
+      require 'test/unit/ui/tap/testrunner'
+      Test::Unit::UI::Tap::TestRunner12
     end
   end
 end

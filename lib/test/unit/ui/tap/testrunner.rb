@@ -1,6 +1,6 @@
 require 'test/unit/ui/testrunner'
 require 'test/unit/ui/testrunnermediator'
-require 'test/unit/ui/tap/abstract_testrunner'
+require 'test/unit/ui/tap/base_testrunner'
 
 module Test
   module Unit
@@ -77,7 +77,7 @@ module Test
         # NOTE: This is the possible replacement for current Tap Runner
         # utilizing the abstract base class.
         #
-        class TestRunner12 < AbstractTestRunner
+        class TestRunner12 < BaseTestRunner
           #
           def tapout_before_suite(suite)
             doc = super(suite)
@@ -142,11 +142,16 @@ module Test
 
           #
           def tapout_after_suite(time)
-            #puts
+            puts("# Finished in #{elapsed_time} seconds.")
+            @result.to_s.each_line do |line|
+              puts("# #{line}")
+            end
           end
 
         private
 
+          #
+          # @todo Does this have test-unit's `fault.long_display`?
           def subdata(doc, type)
             x = doc['exception']
             body = []

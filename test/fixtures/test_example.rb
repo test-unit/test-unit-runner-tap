@@ -1,6 +1,7 @@
 gem 'test-unit'
 require 'test/unit'
-require 'test/unit/runner/tap'
+#require 'test/unit/runner/tap'
+require File.expand_path(File.dirname(__FILE__) + '/../../lib/test/unit/runner/tap')
 
 class ExampleTestCase < Test::Unit::TestCase
   def test_error

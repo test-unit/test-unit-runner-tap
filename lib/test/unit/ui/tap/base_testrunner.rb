@@ -5,10 +5,11 @@ require 'stringio'
 module Test
   module Unit
     module UI
-      module TAP
+      module Tap
 
+        # Base class for all TAP runners.
         #
-        class AbstractTestRunner < Test::Unit::UI::TestRunner
+        class BaseTestRunner < Test::Unit::UI::TestRunner
 
           # TAP-Y/J Revision
           REVISION = 4
@@ -175,10 +176,6 @@ module Test
               #'line'     => test_line
               #'source'   => source(test_file)[test_line-1].strip,
               #'snippet'  => code_snippet(test_file, test_line),
-              #'coverage':
-              #  file: lib/foo.rb
-              #  line: 11..13
-              #  code: Foo#*
               'time' => Time.now - @suite_start
             }
 
@@ -207,10 +204,6 @@ module Test
               #'line'     => test_line
               #'source'   => source(test_file)[test_line-1].strip,
               #'snippet'  => code_snippet(test_file, test_line),
-              #'coverage' =>
-              #  'file' => lib/foo.rb
-              #  'line' => 11..13
-              #  'code' => Foo#*
               'exception' => {
                 'message'   => clean_message(fault.message),
                 'class'     => fault.class.name,
@@ -248,10 +241,6 @@ module Test
               #'line'     => test_line
               #'source'   => source(test_file)[test_line-1].strip,
               #'snippet'  => code_snippet(test_file, test_line),
-              #'coverage' =>
-              #  'file' => lib/foo.rb
-              #  'line' => 11..13
-              #  'code' => Foo#*
               'exception' => {
                 'message'   => clean_message(fault.message),
                 'class'     => fault.class.name,
@@ -292,10 +281,6 @@ module Test
               #  - 44: ok 0,0
               #  - 45: ok 1,2
               #  - 46: ok 2,4
-              #'coverage' =>
-              #  'file' => lib/foo.rb
-              #  'line' => 11..13
-              #  'code' => Foo#*
               'exception' => {
                 'message'   => clean_message(fault.user_message || fault.message),
                 'class'     => fault.class.name,
@@ -336,10 +321,6 @@ module Test
               #  - 44: ok 0,0
               #  - 45: ok 1,2
               #  - 46: ok 2,4
-              #'coverage' =>
-              #  'file' => lib/foo.rb
-              #  'line' => 11..13
-              #  'code' => Foo#*
               'exception' => {
                 'message'   => clean_message(fault.message),
                 'class'     => fault.class.name,
@@ -473,11 +454,10 @@ module Test
 
         end
 
-      end #module TAP
+      end #module Tap
     end #module UI
   end #module Unit
 end #module Test
-
 
 
 

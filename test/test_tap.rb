@@ -1,5 +1,8 @@
 # encoding: UTF-8
 
+# TODO: I don't think that `test-unit-runner-tap` should be showing up
+# in backtraces, it should be filtered out.
+
 require 'stringio'
 require 'test/unit/ui/tap/testrunner'
 
@@ -23,7 +26,7 @@ not ok 1 - test_fail(): <3> expected but was
 # Failure:
 # test_fail()
 #     [#{__FILE__}:#{fail_line}:in `test_fail'
-#      #{File.expand_path(__FILE__+'/../..')}/lib/test/unit/ui/tap/testrunner.rb:27:in `start'
+#      #{File.expand_path(__FILE__+'/../..')}/lib/test/unit/ui/tap/testrunner.rb:22:in `start'
 #      #{__FILE__}:#{start_line}:in `test_run']:
 # <3> expected but was
 # <-1>.
