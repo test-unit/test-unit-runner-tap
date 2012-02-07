@@ -47,7 +47,6 @@ module Test
             doc = super(time)
             puts doc.to_yaml if doc
             puts "..."
-            puts
           end
         end
 

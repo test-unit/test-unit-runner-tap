@@ -453,7 +453,7 @@ module Test
 
           #
           def puts(string='')
-            @output.write(string+"\n")
+            @output.write(string.chomp+"\n")
             @output.flush      
           end
 

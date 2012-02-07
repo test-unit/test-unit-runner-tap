@@ -46,7 +46,6 @@ module Test
           def tapout_after_suite(time)
             doc = super(time)
             puts doc.to_json if doc
-            puts
           end
         end
 
