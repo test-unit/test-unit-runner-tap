@@ -99,6 +99,8 @@ module Test
           def tapout_before_case(testcase)
             return nil if testcase.test_case.nil? 
 
+            @test_case = testcase
+
             doc = {
               'type'    => 'case',
               #'subtype' => '',
@@ -364,7 +366,7 @@ module Test
             return trace
           end
 
-          # Returns a String of source code.
+          # Returns a Hash of source code.
           def code_snippet(file, line)
             s = []
             if File.file?(file)
@@ -378,6 +380,36 @@ module Test
               end
             end
             return s
+          end
+
+          # Return nicely formated String of code lines.
+          def code_snippet_string(file, line)
+            str = []
+            snp = code_snippet_array(file, line)
+            max = snp.map{ |n, c| n.to_s.size }.max
+            snp.each do |n, c|
+              if n == line
+                str << "=> %#{max}d %s" % [n, c]
+              else
+                str << "   %#{max}d %s" % [n, c]
+              end
+            end
+            str.join("\n")
+          end
+
+          # Return Array of source code line numbers and text.
+          def code_snippet_array(file, line)
+            snp = []
+            if File.file?(file)
+              source = source(file)
+              radius = 2 # TODO: make customizable (number of surrounding lines to show)
+              region = [line - radius, 1].max ..
+                       [line + radius, source.length].min
+              snp = region.map do |n|
+                [n, source[n-1].chomp]
+              end
+            end
+            return snp
           end
 
           # Cache source file text. This is only used if the TAP-Y stream
@@ -420,8 +452,8 @@ module Test
           end
 
           #
-          def puts(string="\n")
-            @output.write(string)
+          def puts(string='')
+            @output.write(string+"\n")
             @output.flush      
           end
 
