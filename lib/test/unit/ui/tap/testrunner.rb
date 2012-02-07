@@ -87,10 +87,10 @@ module Test
 
           #
           def tapout_pass(test)
-            doc = super(entry)
+            doc = super(test)
             if doc
               @i += 1
-              puts "ok #{@i} - #{doc['label']}"
+              puts "ok #{@i} - #{doc['label']}(#{@test_case.name})"
             end
           end
 
@@ -99,7 +99,7 @@ module Test
             doc = super(fault)
             if doc
               @i += 1
-              puts "not ok #{@i} - #{doc['label']}"
+              puts "not ok #{@i} - #{doc['label']}(#{@test_case.name})"
               puts subdata(doc, 'FAIL')
             end
           end
@@ -109,7 +109,7 @@ module Test
             doc = super(fault)
             if doc
               @i += 1
-              puts "not ok #{@i} - #{doc['label']}"
+              puts "not ok #{@i} - #{doc['label']}(#{@test_case.name})"
               puts subdata(doc, 'ERROR')
             end
           end
@@ -119,7 +119,7 @@ module Test
             doc = super(fault)
             if doc
               @i += 1
-              puts "not ok #{@i} - #{doc['label']}  # SKIP"
+              puts "not ok #{@i} - #{doc['label']}(#{@test_case.name})  # SKIP"
               puts subdata(doc, 'SKIP')
             end
           end
@@ -129,7 +129,7 @@ module Test
             doc = super(fault)
             if doc
               @i += 1
-              puts "not ok #{@i} - #{doc['label']}  # TODO"
+              puts "not ok #{@i} - #{doc['label']}(#{@test_case.name})  # TODO"
               puts subdata(doc, 'TODO')
             end
           end
@@ -142,7 +142,7 @@ module Test
 
           #
           def tapout_after_suite(time)
-            puts("# Finished in #{elapsed_time} seconds.")
+            puts("# Finished in #{time} seconds.")
             @result.to_s.each_line do |line|
               puts("# #{line}")
             end
@@ -150,18 +150,34 @@ module Test
 
         private
 
+          # TODO: Should this use test-unit's `fault.long_display`?
+
           #
-          # @todo Does this have test-unit's `fault.long_display`?
           def subdata(doc, type)
-            x = doc['exception']
+            exp       = doc['exception']
+            exp_class = exp['class']
+            message   = exp['message']
+            backtrace = exp['backtrace']
+            file      = exp['file']
+            line      = exp['line']
+
             body = []
-            body << "#{type} #{x['file']}:#{x['line']}" 
-            #body << clean_backtrace(exception.backtrace)[0..2].join("    \n")
-            body << "#{x['class']}: #{x['message']}"
-            #body << ""
-            #body << snippet_text(entry)
-            #body << ""
-            body = body.join("\n").gsub(/^/, '#   ')
+            body << "%s (%s)" % [type, exp_class]
+            body << message.to_s
+
+            backtrace[0..0].each do |bt|
+              body << bt.to_s
+            end
+
+            code_snippet_string(file, line).each_line do |s|
+              body << s.chomp
+            end
+
+            backtrace[1..-1].each do |bt|
+              body << bt.to_s
+            end
+
+            body = body.join("\n").gsub(/^/, '# ')
           end
 
         end
