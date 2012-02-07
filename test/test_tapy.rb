@@ -1,4 +1,5 @@
 require 'test/unit'
+require 'yaml'
 
 class TapYTest < Test::Unit::TestCase
 
@@ -48,7 +49,7 @@ class TapYTest < Test::Unit::TestCase
 
   def test_failing_should_have_test_unit_in_backtrace
     @failing_test['exception']['backtrace'].each do |e|
-      assert_not_match /test\/unit/, e
+      assert_not_match(/test\/unit/, e)
     end
   end
 
@@ -66,7 +67,7 @@ class TapYTest < Test::Unit::TestCase
 
   def test_erring_should_not_mention_testunit_in_backtrace
     @erring_test['exception']['backtrace'].each do |e|
-      assert_not_match /test\/unit/, e
+      assert_not_match(/test\/unit/, e)
     end
   end
 
@@ -94,13 +95,20 @@ private
       #@stream = YAML.load_documents(@out)  # b/c of bug in Ruby 1.8
       @stream = (
         s = []
-        YAML.load_documents(output){ |d| s << d }
-        #YAML.load_stream(output).each{ |d| s << d }
+        load_stream(output){ |d| s << d }
         s
       )
     rescue Exception
       puts output
       raise
+    end
+  end
+
+  def load_stream(output, &block)
+    if RUBY_VERSION < '1.9'
+      YAML.load_documents(output, &block)
+    else
+      YAML.load_stream(output).each(&block)
     end
   end
 

@@ -21,5 +21,7 @@ require 'test/unit'
 #  require 'test/unit/notify'
 #end
 
-exit Test::Unit::AutoRunner.run(true, test_dir)
+files = Dir[File.join(test_dir, 'test_*.rb')]
+
+exit Test::Unit::AutoRunner.run(true, test_dir, files)
 
