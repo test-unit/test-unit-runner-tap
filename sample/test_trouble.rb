@@ -1,4 +1,5 @@
-require 'tapunit/tapy'
+gem 'test-unit'
+require 'test/unit/runner/tap'
 
 class TestExample < Test::Unit::TestCase
   def setup
