@@ -164,14 +164,12 @@ module Test
             @counts[:total] += 1
             @counts[:pass]  += 1
 
-            name = test.name.sub(/\(.+?\)\z/, '')
-
             doc = {
               'type'        => 'test',
               #'subtype'     => '',
               'status'      => 'pass',
               #'setup': foo instance
-              'label'       => name,
+              'label'       => clean_label(test.name),
               #'expected' => 2
               #'returned' => 2
               #'file'     => test_file
@@ -198,7 +196,7 @@ module Test
               'type'        => 'test',
               #'subtype'     => '',
               'status'      => 'todo',
-              'label'       => fault.test_name.sub(/\(.+?\)\z/, ''),
+              'label'       => clean_label(fault.test_name),
               #'setup' => "foo instance",
               #'expected' => 2,
               #'returned' => 1,
@@ -235,7 +233,7 @@ module Test
               'type'        => 'test',
               #'subtype'     => '',
               'status'      => 'skip',
-              'label'       => fault.test_name.sub(/\(.+?\)\z/, ''),
+              'label'       => clean_label(fault.test_name),
               #'setup' => "foo instance",
               #'expected' => 2,
               #'returned' => 1,
@@ -272,7 +270,7 @@ module Test
               'type'        => 'test',
               #'subtype'     => '',
               'status'      => 'fail',
-              'label'       => fault.test_name.sub(/\(.+?\)\z/, ''),
+              'label'       => clean_label(fault.test_name),
               #'setup' => "foo instance",
               'expected'    => fault.inspected_expected,
               'returned'    => fault.inspected_actual,
@@ -312,7 +310,7 @@ module Test
               'type'        => 'test',
               #'subtype'     => '',
               'status'      => 'error',
-              'label'       => fault.test_name.sub(/\(.+?\)\z/, ''),
+              'label'       => clean_label(fault.test_name),
               #'setup' => "foo instance",
               #'expected'    => fault.inspected_expected,
               #'returned'    => fault.inspected_actual,
@@ -338,6 +336,11 @@ module Test
             doc.update(captured_output)
 
             return doc
+          end
+
+          #
+          def clean_label(name)
+            name.sub(/\(.+?\)\z/, '').chomp('()')
           end
 
           # Clean the backtrace of any reference to test framework itself.
