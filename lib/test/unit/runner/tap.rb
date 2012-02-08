@@ -30,10 +30,11 @@ module Test
       Test::Unit::UI::Tap::YAMLTestRunner
     end
 
-    # temporary, for testing difference between old and new
-    AutoRunner.register_runner(:tap12) do |auto_runner|
+    # temporaryily available as fallback to orignal tap runner
+    # just in case the new runner exhibits any issues
+    AutoRunner.register_runner(:tap0) do |auto_runner|
       require 'test/unit/ui/tap/testrunner'
-      Test::Unit::UI::Tap::TestRunner12
+      Test::Unit::UI::Tap::OldTestRunner
     end
   end
 end
