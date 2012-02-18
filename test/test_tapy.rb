@@ -89,7 +89,8 @@ private
   FIXTURE = File.dirname(__FILE__) + '/fixtures'
 
   def tap_stream_using_format(type)
-    output = `ruby -Ilib #{FIXTURE}/test_example.rb --runner #{type}`
+    command = "ruby -Ilib #{FIXTURE}/test_example.rb --runner #{type}"
+    output  = `#{command}`
 
     begin
       #@stream = YAML.load_documents(@out)  # b/c of bug in Ruby 1.8

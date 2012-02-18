@@ -1,11 +1,11 @@
-require 'test/unit'
+require 'test-unit'
 require 'test/unit/runner/tap-version'
 
 module Test
   module Unit
     AutoRunner.register_runner(:tap) do |auto_runner|
-      require 'test/unit/ui/tap/testrunner'
-      Test::Unit::UI::Tap::TestRunner
+      require 'test/unit/ui/tap/perl_testrunner'
+      Test::Unit::UI::Tap::PerlTestRunner
     end
 
     AutoRunner.register_runner(:tapj) do |auto_runner|
@@ -33,7 +33,7 @@ module Test
     # temporaryily available as fallback to orignal tap runner
     # just in case the new runner exhibits any issues
     AutoRunner.register_runner(:tap0) do |auto_runner|
-      require 'test/unit/ui/tap/testrunner'
+      require 'test/unit/ui/tap/perl_testrunner'
       Test::Unit::UI::Tap::OldTestRunner
     end
   end

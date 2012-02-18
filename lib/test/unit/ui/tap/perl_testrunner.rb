@@ -7,11 +7,9 @@ module Test
     module UI
       module Tap
 
-        # Outputs test results in TAP version 12 format.
+        # Outputs test results in traditional TAP format, version 12.
         #
-        # @todo Should this class be named `PerlTestRunner`?
-        #
-        class TestRunner < BaseTestRunner
+        class PerlTestRunner < BaseTestRunner
           #
           def tapout_before_suite(suite)
             doc = super(suite)
@@ -127,15 +125,6 @@ module Test
             @output = @options[:output] || STDOUT
             @n_tests = 0
             @already_outputted = false
-          end
-
-          # Begins the test run.
-          def start
-            result = super
-            def result.passed?
-              true # for prove commend :<
-            end
-            result
           end
 
           private
