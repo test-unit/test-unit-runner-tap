@@ -18,7 +18,24 @@ TAP-Y/J format.
 
 == USAGE:
 
+It you test helper script use:
+
   require 'test/unit/runner/tap'
+
+Then you can select the runner via the `--runner` command line option.
+
+  $ ruby test/run_tests.rb --runner yaml
+
+Available runners are `tap`, `tapy`/`yaml` or `tapj`/`json`.
+
+The runner can also be specified in code, if need be. See API documentation
+for more information on how to do this.
+
+To use TAP-Y/J formats with TAPOUT, just pipe results to tapout utility.
+
+  $ ruby test/run_tests.rb --runner yaml | tapout
+
+See TAPOUT poject for more information on that.
 
 == LICENSE:
 
