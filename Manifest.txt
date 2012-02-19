@@ -1,10 +1,15 @@
 #!mast lib test [A-Z]*.*
-.ruby
-lib/test/unit/runner/tap.rb
 lib/test/unit/runner/tap-version.rb
-lib/test/unit/ui/tap/testrunner.rb
+lib/test/unit/runner/tap.rb
+lib/test/unit/ui/tap/base_testrunner.rb
+lib/test/unit/ui/tap/json_testrunner.rb
+lib/test/unit/ui/tap/perl_testrunner.rb
+lib/test/unit/ui/tap/yaml_testrunner.rb
+test/fixtures/test_example.rb
+test/run-test.rb
 test/test_tap.rb
-COPYING
-History.txt
+test/test_tap0.rb
+test/test_tapy.rb
+Gemfile.lock
 README.rdoc
-
+History.txt
