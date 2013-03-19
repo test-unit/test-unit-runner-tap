@@ -18,7 +18,7 @@ TAP-Y/J format.
 
 == USAGE:
 
-It you test helper script use:
+In your test helper script use:
 
   require 'test/unit/runner/tap'
 
