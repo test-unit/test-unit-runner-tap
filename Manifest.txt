@@ -1,4 +1,5 @@
-#!mast lib test [A-Z]*.*
+#!mast .index lib test *.rdoc *.txt
+.index
 lib/test/unit/runner/tap-version.rb
 lib/test/unit/runner/tap.rb
 lib/test/unit/ui/tap/base_testrunner.rb
@@ -10,6 +11,5 @@ test/run-test.rb
 test/test_tap.rb
 test/test_tap0.rb
 test/test_tapy.rb
-Gemfile.lock
 README.rdoc
 History.txt
