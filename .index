@@ -1,0 +1,46 @@
+---
+revision: 2013
+type: ruby
+sources:
+- Index.rb
+authors:
+- name: Thomas Sawyer
+  email: transfire@gmail.com
+- name: Kouhei Sutou
+  email: kou@cozmixng.org
+organizations: []
+requirements:
+- name: test-unit
+- groups:
+  - build
+  development: true
+  name: rake
+conflicts: []
+alternatives: []
+resources:
+- type: home
+  uri: https://github.com/test-unit/test-unit-runner-tap
+  label: Homepage
+- type: code
+  uri: https://github.com/test-unit/test-unit-runner-tap
+  label: Source Code
+repositories: []
+categories: []
+copyrights:
+- holder: Thomas Sawyer
+  year: '2012'
+  license: GPL-2
+- holder: Kouhei Sutou
+  year: '2012'
+  license: GPL-2
+customs: []
+paths:
+  lib:
+  - lib
+name: test-unit-runner-tap
+title: TestUnit TAP
+version: 1.1.1
+summary: TAP runners for TestUnit.
+description: This project provides TAP and TAP-Y/J test output formats for the TestUnit
+  test framework.
+date: '2013-03-19'
