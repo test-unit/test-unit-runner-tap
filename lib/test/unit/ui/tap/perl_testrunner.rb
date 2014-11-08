@@ -47,7 +47,7 @@ module Test
           end
 
           #
-          def tapout_omit(test)
+          def tapout_omit(fault)
             doc = super(fault)
             if doc
               @i += 1
@@ -57,7 +57,7 @@ module Test
           end
 
           #
-          def tapout_todo(test)
+          def tapout_todo(fault)
             doc = super(fault)
             if doc
               @i += 1

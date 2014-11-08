@@ -1,6 +1,6 @@
 = Test::Unit::Runner::Tap
 
-* http://test-unit.rubyforge.org
+* https://github.com/test-unit/test-unit-runner-tap
 
 == DESCRIPTION:
 
