@@ -11,5 +11,3 @@ test/run-test.rb
 test/test_tap.rb
 test/test_tap0.rb
 test/test_tapy.rb
-README.rdoc
-History.txt
