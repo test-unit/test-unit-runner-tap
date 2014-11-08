@@ -1,12 +1,14 @@
 # Test::Unit::Runner::Tap
 
-* https://github.com/test-unit/test-unit-runner-tap
+https://github.com/test-unit/test-unit-runner-tap
 
 
 ## DESCRIPTION
 
-Test::Unit::Runner::Tap is a console Test::Unit UI supporting TAP and TAP-Y/J
-format.
+Test::Unit::Runner::Tap is a console UI for Test::Unit supporting TAP and TAP-Y/J
+formats.
+
+See [Tes::tUnit](http://test-unit.github.io/) for more information about Test::Unit.
 
 See [TAP](http://testanything.org) for more information about TAP format.
 
@@ -49,7 +51,7 @@ See TAPOUT poject for more information on that.
 
 ## CONTRIBUTING
 
-This project uses [Mast](http://rubyworks.github.com/mast) and [Indexer](http://rubyworks.github.com/indexer) tools. To perform a release, run `rake prep`. This will invoke the `mast` and `index` commands as needed. Then check in any changes to `Manifest.txt`, `.index` and `.gemspec` that may have occured. After that run `rake gem` to build the gem package. Be sure to bump the verion in `lib/test/unit/runner/tap-version.rb` and add an entry to `History.md` first!
+This project uses [Mast](http://github.com/rubyworks/mast) and [Indexer](https://github.com/rubyworks/indexer) tools. To perform a release, run `rake prep`. This will invoke the `mast` and `index` commands as needed. Then check in any changes to `Manifest.txt`, `.index` and `.gemspec` that may have occured. After that run `rake gem` to build the gem package. Be sure to bump the verion in `lib/test/unit/runner/tap-version.rb` and add an entry to `History.md` first!
 
 
 ## LICENSE
