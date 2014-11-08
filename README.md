@@ -3,9 +3,9 @@
 * https://github.com/test-unit/test-unit-runner-tap
 
 
-## DESCRIPTION:
+## DESCRIPTION
 
-**Test::Unit::Runner::Tap** - A console Test::Unit UI supporting TAP and TAP-Y/J
+Test::Unit::Runner::Tap is a console Test::Unit UI supporting TAP and TAP-Y/J
 format.
 
 See [TAP](http://testanything.org) for more information about TAP format.
@@ -14,12 +14,18 @@ See [TAPOUT](http://rubyworks.github.com/tapout) for more information about
 TAP-Y/J format.
 
 
-## INSTALL:
+## INSTALL
 
-  $ sudo gem install test-unit-runner-tap
+Using Bundler add to your Gemfile:
+
+    gem 'test-unit-runner-tap'
+
+Or install globally:
+
+    $ sudo gem install test-unit-runner-tap
 
 
-## USAGE:
+## USAGE
 
 In your test helper script use:
 
@@ -41,7 +47,12 @@ To use TAP-Y/J formats with TAPOUT, just pipe results to tapout utility.
 See TAPOUT poject for more information on that.
 
 
-## LICENSE:
+## CONTRIBUTING
+
+This project uses [Mast](http://rubyworks.github.com/mast) and [Indexer](http://rubyworks.github.com/indexer) tools. To perform a release, run `rake prep`. This will invoke the `mast` and `index` commands as needed. Then check in any changes to `Manifest.txt`, `.index` and `.gemspec` that may have occured. After that run `rake gem` to build the gem package. Be sure to bump the verion in `lib/test/unit/runner/tap-version.rb` and add an entry to `History.md` first!
+
+
+## LICENSE
 
 (LGPL v3.0 License)
 
