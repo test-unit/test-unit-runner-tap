@@ -31,7 +31,7 @@ not ok 1 - test_fail()
 # => 17       def test_fail; assert_equal(3, 1 - 2); end; fail_line = __LINE__
 #    18     end
 #    19     output = StringIO.new
-# test/test_tap.rb:21
+# test/test_tap.rb:#{start_line}
 ok 2 - test_success()
 # Finished in 0.001 seconds.
 # 2 tests, 2 assertions, 1 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
@@ -48,7 +48,7 @@ EOR
     end
     output = StringIO.new
     runner = Test::Unit::UI::Tap::PerlTestRunner.new(test_case.suite, :output => output)
-    result = runner.start;
+    result = runner.start; start_line = __LINE__
     assert_equal(<<-EOR, output.string.gsub(/[\d\.]+ seconds/, "0.001 seconds"))
 1..1
 not ok 1 - test_omit()  # SKIP
@@ -60,7 +60,7 @@ not ok 1 - test_omit()  # SKIP
 # => 45         omit
 #    46         assert_equal(3, 1 + 2)
 #    47       end
-# test/test_tap.rb:51
+# test/test_tap.rb:#{start_line}
 # Finished in 0.001 seconds.
 # 1 tests, 0 assertions, 0 failures, 0 errors, 0 pendings, 1 omissions, 0 notifications
 EOR
@@ -76,7 +76,7 @@ EOR
     end
     output = StringIO.new
     runner = Test::Unit::UI::Tap::PerlTestRunner.new(test_case.suite, :output => output)
-    result = runner.start;
+    result = runner.start; start_line = __LINE__
     assert_equal(<<-EOR, output.string.gsub(/[\d\.]+ seconds/, "0.001 seconds"))
 1..1
 not ok 1 - test_pend()  # TODO
@@ -88,7 +88,7 @@ not ok 1 - test_pend()  # TODO
 # => 73         pend
 #    74         assert_equal(3, 1 + 2)
 #    75       end
-# test/test_tap.rb:79
+# test/test_tap.rb:#{start_line}
 # Finished in 0.001 seconds.
 # 1 tests, 0 assertions, 0 failures, 0 errors, 1 pendings, 0 omissions, 0 notifications
 EOR
