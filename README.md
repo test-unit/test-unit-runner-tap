@@ -1,30 +1,33 @@
-= Test::Unit::Runner::Tap
+# Test::Unit::Runner::Tap
 
 * https://github.com/test-unit/test-unit-runner-tap
 
-== DESCRIPTION:
 
-<b>Test::Unit::Runner::Tap</b> - A console Test::Unit UI supporting TAP and TAP-Y/J
+## DESCRIPTION:
+
+**Test::Unit::Runner::Tap** - A console Test::Unit UI supporting TAP and TAP-Y/J
 format.
 
-See {TAP}[http://testanything.org] for more information about TAP format.
+See [TAP](http://testanything.org) for more information about TAP format.
 
-See {TAPOUT}[http://rubyworks.github.com/tapout] for more information about
+See [TAPOUT](http://rubyworks.github.com/tapout) for more information about
 TAP-Y/J format.
 
-== INSTALL:
+
+## INSTALL:
 
   $ sudo gem install test-unit-runner-tap
 
-== USAGE:
+
+## USAGE:
 
 In your test helper script use:
 
-  require 'test/unit/runner/tap'
+    require 'test/unit/runner/tap'
 
 Then you can select the runner via the `--runner` command line option.
 
-  $ ruby test/run_tests.rb --runner yaml
+    $ ruby test/run_tests.rb --runner yaml
 
 Available runners are `tap`, `tapy`/`yaml` or `tapj`/`json`.
 
@@ -33,11 +36,12 @@ for more information on how to do this.
 
 To use TAP-Y/J formats with TAPOUT, just pipe results to tapout utility.
 
-  $ ruby test/run_tests.rb --runner yaml | tapout
+    $ ruby test/run_tests.rb --runner yaml | tapout
 
 See TAPOUT poject for more information on that.
 
-== LICENSE:
+
+## LICENSE:
 
 (LGPL v3.0 License)
 
