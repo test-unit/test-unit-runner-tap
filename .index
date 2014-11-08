@@ -15,6 +15,14 @@ requirements:
   - build
   development: true
   name: rake
+- groups:
+  - build
+  development: true
+  name: mast
+- groups:
+  - build
+  development: true
+  name: indexer
 conflicts: []
 alternatives: []
 resources:

@@ -5,13 +5,18 @@ task :test do
   ruby("test/run-test.rb")
 end
 
+desc "prepare for release"
+task :prep => ['.index'] do
+  sh 'mast -u'
+end
+
 desc "build gem package"
-task :gem => ['.ruby'] do
+task :gem => :prep do
   sh 'gem build .gemspec'  
 end
 
-file '.ruby' => ['Profile', 'lib/test/unit/runner/tap-version.rb'] do
-  sh 'dotruby source Profile'
+file '.index' => ['Index.rb', 'lib/test/unit/runner/tap-version.rb'] do
+  sh 'index -u Index.rb'
 end
 
 # vim: syntax=Ruby
