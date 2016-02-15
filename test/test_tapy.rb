@@ -33,10 +33,12 @@ class TapYTest < Test::Unit::TestCase
 
   def test_passing_should_have_correct_label
     assert_equal 'test_passing', @passing_test['label']
+    assert_equal 'test/fixtures/test_example.rb', @passing_test['file']
   end
 
   def test_failing_should_have_correct_label
     assert_equal "test_failing", @failing_test['label']
+    assert_equal "test/fixtures/test_example.rb", @failing_test['file']
   end
 
   def test_failing_should_hash_correct_exception
@@ -55,6 +57,7 @@ class TapYTest < Test::Unit::TestCase
 
   def test_erring_should_have_correct_label
     assert_equal 'test_error', @erring_test['label']
+    assert_equal 'test/fixtures/test_example.rb', @erring_test['file']
   end
 
   def test_erring_should_have_correct_exception
