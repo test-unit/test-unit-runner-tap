@@ -33,17 +33,19 @@ class TapYTest < Test::Unit::TestCase
 
   def test_passing_should_have_correct_label
     assert_equal 'test_passing', @passing_test['label']
+    assert_equal 'test/fixtures/test_example.rb', @passing_test['file']
   end
 
   def test_failing_should_have_correct_label
     assert_equal "test_failing", @failing_test['label']
+    assert_equal "test/fixtures/test_example.rb", @failing_test['file']
   end
 
   def test_failing_should_hash_correct_exception
     file = "test/fixtures/test_example.rb"
     assert_equal "Test::Unit::Failure",    @failing_test['exception']['class']
     assert_equal file,                     @failing_test['exception']['file']
-    assert_equal 12,                       @failing_test['exception']['line']
+    assert_equal 10,                       @failing_test['exception']['line']
     assert_equal "assert_equal('1', '2')", @failing_test['exception']['source']
   end
 
@@ -55,13 +57,14 @@ class TapYTest < Test::Unit::TestCase
 
   def test_erring_should_have_correct_label
     assert_equal 'test_error', @erring_test['label']
+    assert_equal 'test/fixtures/test_example.rb', @erring_test['file']
   end
 
   def test_erring_should_have_correct_exception
     file = "test/fixtures/test_example.rb"
     assert_equal 'Test::Unit::Error', @erring_test['exception']['class']
     assert_equal file,                @erring_test['exception']['file']
-    assert_equal 8,                   @erring_test['exception']['line']
+    assert_equal 6,                   @erring_test['exception']['line']
     assert_equal 'raise',             @erring_test['exception']['source']
   end
 
