@@ -45,7 +45,7 @@ class TapYTest < Test::Unit::TestCase
     file = "test/fixtures/test_example.rb"
     assert_equal "Test::Unit::Failure",    @failing_test['exception']['class']
     assert_equal file,                     @failing_test['exception']['file']
-    assert_equal 12,                       @failing_test['exception']['line']
+    assert_equal 10,                       @failing_test['exception']['line']
     assert_equal "assert_equal('1', '2')", @failing_test['exception']['source']
   end
 
@@ -64,7 +64,7 @@ class TapYTest < Test::Unit::TestCase
     file = "test/fixtures/test_example.rb"
     assert_equal 'Test::Unit::Error', @erring_test['exception']['class']
     assert_equal file,                @erring_test['exception']['file']
-    assert_equal 8,                   @erring_test['exception']['line']
+    assert_equal 6,                   @erring_test['exception']['line']
     assert_equal 'raise',             @erring_test['exception']['source']
   end
 
