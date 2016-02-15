@@ -1,5 +1,6 @@
 require 'test-unit'
 require 'test/unit/runner/tap-version'
+require 'test/unit/ui/tap/ext/base_testrunner'
 
 module Test
   module Unit
