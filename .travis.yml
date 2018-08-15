@@ -6,6 +6,6 @@ rvm:
   - jruby
   - ruby-head
 notifications:
-  recipients:
-    - test-unit-commit@googlegroups.com
+  webhooks:
+    - https://webhook.commit-email.info/
 
